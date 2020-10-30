@@ -30,7 +30,7 @@ void drawBoard(void)
         printf(" %c * %c * %c * %c * %c * %c * %c * %c *\n", board[row][0], board[row][1], board[row][2], board[row][3], board[row][4], board[row][5],
                                   board[row][6], board[row][7]);
         printf("   *   *   *   *   *   *   *   *\n");
-        row++;
+        printf("***********************************\n");
     }
 }
 
