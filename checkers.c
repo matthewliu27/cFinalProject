@@ -6,19 +6,28 @@
 #include "checkers.h"
 
 void initBoard(void)
-{
-    int row;
-    int col;
+ {
+                     int col;
 
-    for (row = 0; row < boardSize; row++)
-    {
-        for (col = 0; col < boardSize; col++)
-        {
-            board[row][col] = ' ';
-        }
-    }
-    return;
-}
+                     {
+                         for(col =0; col<boardSize; col++)
+                         {
+                             if(col% 2 == 0)
+                             {
+                                 board[5][col]= 'x';
+                                 board[7][col] = 'x';
+                                 board[0][col]= 'o';
+                                 board[2][col] = 'o';
+                             }
+                             if(col % 2 == 1)
+                             {
+                                 board[1][col] = 'o';
+                                 board[6][col] = 'x';
+            }
+      }
+   return;
+ }
+ }
 
 void drawBoard(void)
 {
