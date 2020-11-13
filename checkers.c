@@ -30,6 +30,7 @@ for(col =0; col<boardSize; col++)
  
  }
 }
+
 void drawBoard(void)
 {
     int row;
@@ -44,3 +45,24 @@ void drawBoard(void)
     }
 }
 
+int goFirst(void)
+{
+    char x;
+    printf("Would you like to go first (y/n)\n");
+    do
+    {
+        x = getchar();
+    }
+    while( (x !='y') && (x !='Y') && (x !='n') && (x != 'N') );
+    {
+        printf("Please enter the correct letter\n");
+    }
+    if( (x == 'y') || (x = 'Y') )
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}

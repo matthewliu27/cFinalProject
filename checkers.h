@@ -13,5 +13,9 @@ void initBoard(void);
 
 void drawBoard(void);
 
+char user;
+char computer;
+
+int goFirst(void);
 
 #endif
