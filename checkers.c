@@ -198,6 +198,7 @@ void movePiece(int row1, int row2)
                         }
                         return 0;
                         }
+    }
                             
     
 
@@ -206,7 +207,8 @@ void movePiece(int row1, int row2)
                             for(int x=0; x<INT_MAX; x++)
                             {
                                 if(user == 'x')
-                                {playerMove();
+                                {
+                                    playerMove();
                                     computerMove();
                                 }
                                 if(computer == 'x')
@@ -223,7 +225,7 @@ void movePiece(int row1, int row2)
                                                 printf("YOU WIN!");
                                         }
                             }
-
+                        }
                             int checkPieces(char a)
                             {
                                 int pieces = 0;
