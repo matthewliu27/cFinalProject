@@ -132,7 +132,7 @@ void movePiece(int row1, int row2)
                     printf("That’s illegal");
                     break;
                     }
-                    else if((col2-col==1 || col2-col == -1) && emptySpot(row2,col2)==0)
+                    else if((col2-col==1 || col2-col == -1) && spotEmpty(row2,col2)==0)
                     {
                     printf("That’s illegal");
                     break;
@@ -167,7 +167,7 @@ void movePiece(int row1, int row2)
                     }
             int border(int a, int b)
             {
-                if(a>=1 && a<= 8 && b>=1 b<=8)
+                if(a>=1 && a<= 8 && b>=1 && b<=8)
                 {
                     return 1;
                 }
@@ -205,12 +205,13 @@ void movePiece(int row1, int row2)
                         {
                             for(int x=0; x<INT_MAX; x++)
                             {
-                                if(user == 'x');
+                                if(user == 'x')
                                 {playerMove();
                                     computerMove();
                                 }
-                                if(computer == 'x');
-                                {computerMove();
+                                if(computer == 'x')
+                                {
+                                    computerMove();
                                         playerMove();
                                 }
                                 if(checkPieces(user)== 0)
