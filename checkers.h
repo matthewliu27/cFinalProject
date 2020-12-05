@@ -1,39 +1,39 @@
- /*
-  *     * checkers.h
-  *         */
+/*
+*     * checkers.h
+*         */
   
-   #ifndef checkers
-   #define checkers
+#ifndef checkers
+#define checkers
   
-   #define boardSize 8
+#define boardSize 8
   
 char user;
 char computer;
   
 char board[boardSize][boardSize];
  
-  void initBoard(void);
+void initBoard(void);
    
-    void drawBoard(void);
+void drawBoard(void);
      
-      int goFirst(void);
+int goFirst(void);
 
-        void startGame(void);
+void startGame(void);
 
-          void computerMove(void);
+void computerMove(void);
            
-            void playerMove(void);
-              void movePiece(int row1, int row2);
-               
-               void removePiece(int a, int b);
+void playerMove(void);
+void movePiece(int row1, int row2);
+    
+void removePiece(int a, int b);
 
-                void createPiece(int a, int b, char c);
+void createPiece(int a, int b, char c);
 
-                 int spotEmpty(int a, int b);
+int spotEmpty(int a, int b);
 
 
-                 int border(int a, int b);
+int border(int a, int b);
 
-                 int checkPieces(char a);
-                  #endif
+int checkPieces(char a);
+#endif
                  
