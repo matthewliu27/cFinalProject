@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "checkers.h"
 #include <limits.h>
+#include <stdlib.h>
 
 void initBoard(void)
 {
@@ -247,7 +248,7 @@ void computerMove (void)
         {
             printf("This spot is empty");
         }
-        else if(board[row][col] = user)
+        else if(board[row][col] == user)
         {
             printf("This is not your piece!");
         }
@@ -271,5 +272,50 @@ void movePieceCPU(int row1, int row2)
         scanf("%d", &y);
         row2 = y/ 10 - 1;
         col2 = y % 10 -1;
+        col = y % 10-1;
+        if (( row2 == row) || (row2 = row++))
+        {
+            printf("That move is illegal please try again!");
+            break;
+        }
+        else if (( abs(row2-row) != 1) && ( abs(col2-col) != 1)) 
+        {
+            printf("That's illegal");
+            break;
+        }
+        else if (border(row2,col2) == 0)
+        {
+            printf("That's illegal");
+            break;
+        }
+        else if (board[row2][col2] == user)
+        {
+            if (abs(col2-col) == 1 )
+            {
+                if(spotEmpty(row2++,col2++)==1)
+                {
+                    removePiece(row2,col2);
+                    createPiece(row2++,col2++,computer);
+                    removePiece(row,col);
+                    break;
+                }
+            }
+            if (col2-col == -1)
+            {
+                if(spotEmpty(row2--,col2++) == 1)
+                {
+                    removePiece(row2,col2);
+                    createPiece(row2--,col2++,computer);
+                    removePiece(row,col);
+                    break;
+                }
+            }
+            else
+            {
+                removePiece(row,col);
+                createPiece(row2,col2,computer);
+                break;
+            }
+        }
     }
 }
