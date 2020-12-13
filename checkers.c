@@ -201,11 +201,13 @@ void startGame(void)
         {
             playerMove();
             computerMove();
+            drawBoard();
         }
         if(computer == 'x')
         {
             computerMove();
             playerMove();
+            drawBoard();
         }
         if(checkPieces(user)== 0)
         {
