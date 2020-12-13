@@ -102,6 +102,7 @@ void movePiece(int row1, int row2)
         scanf("%d",  &y);
         row2 = y/10 -1;
         col2 = y % 10 -1;
+        col = y % 10-1;
         if(( row2 == row) || (row2= row--))
         { 
             printf("That move is illegal please try again!");
@@ -232,3 +233,43 @@ int checkPieces(char a)
   return pieces;
 }
 
+void computerMove (void)
+{
+    int row, col;
+    int x;
+    while (1)
+    {
+        printf("Which piece(write rowcol as the same number) do you want to move?");
+        scanf("%d", &x);
+        row = x / 10 -1;
+        col = x % 10 -1;
+        if(spotEmpty(row,col) == 1)
+        {
+            printf("This spot is empty");
+        }
+        else if(board[row][col] = user)
+        {
+            printf("This is not your piece!");
+        }
+        if ((spotEmpty(row,col) == 0) && (board[row][col] != user))
+        {
+            movePieceCPU(row,col);
+            break;
+        }
+    }
+}
+
+void movePieceCPU(int row1, int row2)
+{
+    int y;
+    int col2;
+    int row;
+    int col;
+    while (1)
+    {
+        printf("Where do you want to move it");
+        scanf("%d", &y);
+        row2 = y/ 10 - 1;
+        col2 = y % 10 -1;
+    }
+}
