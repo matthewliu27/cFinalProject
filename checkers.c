@@ -122,6 +122,13 @@ void movePiece(int row1, int col1)
             printf("That spot is occupied!");
             break;
         }
+        if ((board[row2][col2] == 'o') && (board[row2++][col2++] = ' '))
+        {
+            removePiece(row,col);
+            removePiece(row2,col2);
+            createPiece(row2++,col2++,user);
+            break;
+        }
         else
         {
             removePiece(row,col);
@@ -177,6 +184,8 @@ void startGame(void)
         {
             playerMove();
             drawBoard();
+            computerMove();
+            drawBoard();
         }
         if(computer == 'x')
         {
@@ -212,28 +221,29 @@ int checkPieces(char a)
 
 void computerMove (void)
 {
-    int row, col;
-    int x;
-    while (1)
+    int x,y;
+    while(1)
     {
-        printf("Which piece(write rowcol as the same number) do you want to move?");
-        scanf("%d", &x);
-        row = x / 10 -1;
-        col = x % 10 -1;
-        if(spotEmpty(row,col) == 1)
+        printf("which piece do you want to move? Enter row # press enter then Enter col #\n");
+        scanf("%d",  &x);
+        scanf("%d",  &y);
+        row3 = x-1;
+        col3 = y-1;
+        if(spotEmpty(row3,col3) == 1)
         {
-            printf("This spot is empty");
+            printf("this spot is empty\n");
         }
-        else if(board[row][col] == user)
+        else if(board[row3][col3] = user)
         {
-            printf("This is not your piece!");
+            printf("That is not your piece!\n");
         }
-        if ((spotEmpty(row,col) == 0) && (board[row][col] != user))
+        if((spotEmpty(row3,col3) == 0) && (board[row3][col3] == computer))
         {
-            movePieceCPU(row,col);
+            movePieceCPU(row3,col3);
             break;
         }
     }
+
 }
 
 void movePieceCPU(int row1, int row2)
