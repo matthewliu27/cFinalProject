@@ -126,6 +126,29 @@ void movePiece(int row1, int col1)
             createPiece(row2++,col2++,user);
             break;
         }
+        if(board[row2][col2] == computer)
+        {
+            if(col2-col == 1 )
+            {
+                if(spotEmpty(row2++,col2++)==1 )
+                {
+                    removePiece(row2,col2);
+                    createPiece(row2++,col2++,user);
+                    removePiece(row,col);
+                    break;
+                }
+            }
+            if(col2-col == -1)
+            {
+                if(spotEmpty(row2--,col2++)==1)
+                {
+                    removePiece(row2,col2);
+                    createPiece(row2--,col2++,user);
+                    removePiece(row,col);
+                    break;
+                }
+            }
+        }
         else
         {
             removePiece(row,col);
@@ -243,7 +266,7 @@ void computerMove (void)
 
 }
 
-void movePieceCPU(int row3, int col3)
+void movePieceCPU(int rowdf, int coldf)
 {
     int x2,y2;
     while(1)
@@ -275,7 +298,7 @@ void movePieceCPU(int row3, int col3)
         }
         else
         {
-            removePiece(row3,col3);
+            removePiece(rowdf,coldf);
             createPiece(row4,col4,computer);
             break;
         }
