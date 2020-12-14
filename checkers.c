@@ -66,21 +66,21 @@ int goFirst(void)
 
 void playerMove(void)
 {
-    int row,col;
-    int x;
+    int x,y;
     while(1)
     {
-        printf("which piece(write rowcol as the same number) do you want to move?");
+        printf("which piece do you want to move? Enter row # press enter then Enter col #\n");
         scanf("%d",  &x);
-        row = x / 10 -1;
-        col = x % 10 -1;
+        scanf("%d",  &y);
+        row = x-1;
+        col = y-1;
         if(spotEmpty(row,col) == 1)
         {
-            printf("this spot is empty");
+            printf("this spot is empty\n");
         }
         else if(board[row][col] != user)
         {
-            printf("That is not your piece!");
+            printf("That is not your piece!\n");
         }
         if((spotEmpty(row,col) == 0) && (board[row][col] == user))
         {
@@ -93,17 +93,15 @@ void playerMove(void)
 
 void movePiece(int row1, int row2)
 {
-    int y;
+    int x2,y2;
     int col2;
-    int row;
-    int col;
     while(1)
     {
-        printf("where do you want to move it?");
-        scanf("%d",  &y);
-        row2 = y/10 -1;
-        col2 = y % 10 -1;
-        col = y % 10-1;
+        printf("where do you want to move it?\n");
+        scanf("%d",  &x2);
+        scanf("%d",  &y2);
+        row2 = x2 - 1; 
+        col2 = y2-1;
         if(( row2 == row) || (row2= row--))
         { 
             printf("That move is illegal please try again!");
@@ -200,13 +198,11 @@ void startGame(void)
         if(user == 'x')
         {
             playerMove();
-            computerMove();
             drawBoard();
         }
         if(computer == 'x')
         {
             computerMove();
-            playerMove();
             drawBoard();
         }
         if(checkPieces(user)== 0)

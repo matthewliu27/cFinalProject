@@ -6,7 +6,9 @@
 #define checkers
   
 #define boardSize 8
-  
+
+int row,col;
+
 char user;
 char computer;
 char board[boardSize][boardSize];
