@@ -9,8 +9,7 @@
 
 void initBoard(void)
 {
-    int col;
-    {
+    
         for(col =0; col<boardSize; col++)
         {
             if(col % 2 == 0)
@@ -27,12 +26,11 @@ void initBoard(void)
             }
         }
         return;
-    }
+    
 }
   
 void drawBoard(void)
 {
-    int row;
     printf("\n");
     for ( row = 0; row < boardSize ; row++)
     {
