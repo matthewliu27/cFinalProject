@@ -89,7 +89,7 @@ void playerMove(void)
 
 }
 
-void movePiece(int row1, int col2)
+void movePiece(int row1, int col1)
 {
     int x2,y2;
     while(1)
@@ -99,57 +99,36 @@ void movePiece(int row1, int col2)
         scanf("%d",  &y2);
         row2 = x2 - 1; 
         col2 = y2-1;
-        printf("row = %d, col = %d\n",row,col);
+        printf("row1 = %d, col1 = %d\n",row1,col1);
         printf("row2 = %d, col2 = %d\n",row2,col2);
-        if(( row2 == row) || (row2= row--))
+        printf("abs(row2-row1) = %d",abs(row2-row1));
+        if( (abs(row2-row1) != 1) || (abs(col2-col1) != 1) )
+        {
+            printf("You cannot move more than one row or col at a time!\n");
+            break;
+        }
+        if((row2 == row1) || (row2==row1++) || (col2==col1) )
         { 
-            printf("That move is illegal please try again!");
+            printf("You must move diagnolly!\n");
                 break;
         }
-        else if(((row2-row != 1) && (col2 - col != 1)) || ((col2-col!=-1) && (row2-row!=1)))
+        if (border(row2,col2)==0)
         {
-            printf("That’s illegal");
+            printf("That is not on the board!\n");
             break;
         }
-        else if(border(row2,col2)==0)
+        if (board[row2][col2] == 'x')
         {
-            printf("That’s illegal");
+            printf("That spot is occupied!");
             break;
         }
-        else if((col2-col==1 || col2-col == -1) && spotEmpty(row2,col2)==0)
+        else
         {
-            printf("That’s illegal");
+            removePiece(row,col);
+            createPiece(row2,col2,user);
             break;
         }
-        else if(board[row2][col2] == computer)
-        {
-            if(col2-col == 1 )
-            {
-                if(spotEmpty(row2++,col2++)==1 )
-                {
-                    removePiece(row2,col2);
-                    createPiece(row2++,col2++,user);
-                    removePiece(row,col);
-                    break;
-                }
-            }
-            if(col2-col == -1)
-            {
-                if(spotEmpty(row2--,col2++)==1)
-                {
-                    removePiece(row2,col2);
-                    createPiece(row2--,col2++,user);
-                    removePiece(row,col);
-                    break;
-                }
-            }
-            else
-            {
-                removePiece(row, col);
-                createPiece(row2,col2,user);
-                break;
-            }
-        }
+        
     }
 }
 
@@ -173,7 +152,7 @@ void removePiece(int a, int b)
 
 void createPiece(int a, int b, char c)
 {
-    board[a][b] = 'c';
+    board[a][b] = 'x';
     return;
 }
 
