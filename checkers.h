@@ -8,7 +8,7 @@
 #define boardSize 8
 
 int row,col;
-
+int row2,col2;
 char user;
 char computer;
 char board[boardSize][boardSize];

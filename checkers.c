@@ -89,10 +89,9 @@ void playerMove(void)
 
 }
 
-void movePiece(int row1, int row2)
+void movePiece(int row1, int col2)
 {
     int x2,y2;
-    int col2;
     while(1)
     {
         printf("where do you want to move it?\n");
@@ -100,12 +99,14 @@ void movePiece(int row1, int row2)
         scanf("%d",  &y2);
         row2 = x2 - 1; 
         col2 = y2-1;
+        printf("row = %d, col = %d\n",row,col);
+        printf("row2 = %d, col2 = %d\n",row2,col2);
         if(( row2 == row) || (row2= row--))
         { 
             printf("That move is illegal please try again!");
                 break;
         }
-        else if(((row2-row!=1) && (col2 - col != 1)) || ((col2-col!=-1) && (row2-row!=1)))
+        else if(((row2-row != 1) && (col2 - col != 1)) || ((col2-col!=-1) && (row2-row!=1)))
         {
             printf("That’s illegal");
             break;
