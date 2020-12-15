@@ -99,7 +99,6 @@ void movePiece(int row1, int col1)
         scanf("%d",  &y2);
         row2 = x2 - 1; 
         col2 = y2-1;
-        printf("col2-col1 == 1 runs\n");
         
         if( (abs(row2-row1) != 1) || (abs(col2-col1) != 1) )
         {
@@ -123,11 +122,8 @@ void movePiece(int row1, int col1)
         }
         if(board[row2][col2] == 'o')
         {
-            printf("checking if = 'o' runs\n");
-            printf("col2-col1 == 1 runs\n");
             if(col2-col1 == 1 )
             {
-                printf("col2-col1 == 1 runs\n");
                 printf("row2 = %d, col2 = %d\n", row2,col2);
                 if(spotEmpty(row2--,col2++)==0 )
                 {
@@ -147,7 +143,6 @@ void movePiece(int row1, int col1)
             }
             if(col2-col1 == -1)
             {
-                printf("col2-col1 == -1 runs\n");
                 if((spotEmpty(row2--,col2++))==1)
                 {
                     removePiece(row2,col2);
@@ -307,12 +302,8 @@ void movePieceCPU(int rowdf, int coldf)
         }
         if(board[row4][col4] == 'x')
         {
-            printf("checking if = 'o' runs\n");
-            printf("col2-col1 == 1 runs\n");
             if(col4-col3 == 1 )
             {
-                printf("col2-col1 == 1 runs\n");
-                printf("row2 = %d, col2 = %d\n", row2,col2);
                 if(spotEmpty(row4++,col4--)==1 )
                 {
                     int bs = row4;
@@ -320,10 +311,8 @@ void movePieceCPU(int rowdf, int coldf)
                     col4 = bs;
                     removePiece(row4,col4);
                     removePiece(row3,col3);
-                printf("row2 = %d, col2 = %d\n", row2,col2);
                 row4++;
                 col4--;
-                printf("row2 = %d, col2 = %d\n", row2,col2);
                     createPiece(row4,col4,user);
                     printf("you removed a piece!\n");
                     break;
@@ -331,7 +320,6 @@ void movePieceCPU(int rowdf, int coldf)
             }
             if(col4-col3 == -1)
             {
-                printf("col2-col1 == -1 runs\n");
                 if((spotEmpty(row4++,col4++))==1)
                 {
                     removePiece(row4,col4);
