@@ -1,38 +1,38 @@
 /*
 *     * checkers.h
 *         */
-  
+
 #ifndef checkers
 #define checkers
-  
+
 #define boardSize 8
-int row,col,row2,col2; /* for player1*/
-int row3,col3,row4,col4; /*for player2*/
-char player1;
-char player2;
-char board[boardSize][boardSize];
- 
-void initBoard(void);
-   
-void drawBoard(void);
+int row1, col1, row2, col2; /* for player1*/
+int row3, col3, row4, col4; /*for player2*/
 
-void startGame(void);
+char player1; /*player 1 decleration, set it to x in main */
+char player2; /*player 2 decleration, set it to o in main */
 
-void player2Move(void);
-           
-void playerMove(void);
-void player1movePiece(int row1, int row2);
-void player2movePiece(int row1, int row2);
+char board[boardSize][boardSize]; /*set boardsize 8x8 */
 
-void removePiece(int a, int b);
+void initBoard(void); /* init board*/
 
-void createPiece(int a, int b, char c);
+void drawBoard(void); /* draw board*/
 
-int spotEmpty(int a, int b);
+void startGame(void); /*Play game */
 
+/* Player move functions */
+void playerMove(void); /*player1 choose piece */
+void player2Move(void); /*player2 choose piece*/
+void player1movePiece(int row1, int row2); /*player1 move piece */
+void player2movePiece(int row1, int row2); /*player2 move piece*/
 
-int border(int a, int b);
+void removePiece(int a, int b); /*sets boardspot to ' ' */
 
-int checkPieces(char a);
+void createPiece(int a, int b, char c); /* places x or o in board spot */
+
+int spotEmpty(int a, int b); /* check if boardspot = ' ' */
+
+int border(int a, int b); /* prevents choices that are not on board  0<=row<=8 0<=col<=8 */
+
+int checkPieces(char a); /* Checks for win */
 #endif
-                 
