@@ -10,19 +10,19 @@
 void initBoard(void)
 {
     
-        for(col =0; col<boardSize; col++)
+        for(int cold =0; cold<boardSize; col++)
         {
             if(col % 2 == 0)
             {
-                board[5][col]= 'x';
-                board[7][col] = 'x';
-                board[1][col]= 'o';
+                board[5][cold]= 'x';
+                board[7][cold] = 'x';
+                board[1][cold]= 'o';
             }
             if(col % 2 == 1)
             {
-                board[0][col] = 'o';
-                board[6][col] = 'x';
-                board[2][col] = 'o';
+                board[0][cold] = 'o';
+                board[6][cold] = 'x';
+                board[2][cold] = 'o';
             }
         }
         return;
@@ -33,11 +33,11 @@ void drawBoard(void)
 {
     printf("\n");
     printf("\t 1   2   3   4   5   6   7   8\n\n");
-    for ( row = 0; row < boardSize ; row++)
+    for (int rowd = 0; rowd < boardSize ; rowd++)
     {
         printf("\t   *   *   *   *   *   *   *   \n");
-        printf("%d\t %c * %c * %c * %c * %c * %c * %c * %c \n",row+1, board[row][0], board[row][1], board[row][2], board[row][3], board[row][4], board[row][5],
-                board[row][6], board[row][7]);
+        printf("%d\t %c * %c * %c * %c * %c * %c * %c * %c \n",rowd+1, board[rowd][0], board[rowd][1], board[rowd][2], board[rowd][3], board[rowd][4], board[rowd][5],
+                board[rowd][6], board[rowd][7]);
         printf("\t   *   *   *   *   *   *   *   \n");
         printf("\t********************************\n");
     }
