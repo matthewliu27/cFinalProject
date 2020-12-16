@@ -99,7 +99,6 @@ void movePiece(int row1, int col1)
         scanf("%d",  &y2);
         row2 = x2 - 1; 
         col2 = y2-1;
-        printf("row2 = %d, col2 = %d before jump\n",row2,col2);
         
         if( (abs(row2-row1) != 1) || (abs(col2-col1) != 1) )
         {
@@ -319,7 +318,6 @@ void movePieceCPU(int rowdf, int coldf)
         {
             if(col4-col3 == 1 ) /*jumping from left ro right */
             {
-                printf("jumping left to right\n");
                 row4++; /*checking down 1 right 1r*/
                 col4++;
                 if(spotEmpty(row4,col4)==1 )
@@ -334,10 +332,15 @@ void movePieceCPU(int rowdf, int coldf)
                     printf("you removed a piece!\n");
                     break;
                 }
+                else
+                {
+                    printf("There's no space to jump!\n");
+                    break;
+                }
+
             }
             if(col4-col3 == -1)
             {
-                printf("jumping right to left\n");
                 row4++; /*checking down 1 left 1 */ 
                 col4--;
                 if((spotEmpty(row4,col4))==1)
@@ -352,6 +355,11 @@ void movePieceCPU(int rowdf, int coldf)
                     printf("you removed a piece!\n");
                     break;
                 }
+                else
+                {
+                    printf("There's no space to jump!\n");
+                    break;
+                }
             }
         }
         else
@@ -361,8 +369,6 @@ void movePieceCPU(int rowdf, int coldf)
             break;
         }
     }
-        
-
 }
     
 
