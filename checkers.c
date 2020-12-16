@@ -100,49 +100,42 @@ void movePiece(int row1, int col1)
         scanf("%d",  &y2);
         row2 = x2 - 1; 
         col2 = y2-1;
-        printf("col2-col1 == 1 runs\n");
         
         if( (abs(row2-row1) != 1) || (abs(col2-col1) != 1) )
         {
             printf("You cannot move more than one row or col at a time!\n");
             break;
         }
-        if((row2 == row1) || (row2==row1++) || (col2==col1) )
+        else if((row2 == row1) || (row2==row1++) || (col2==col1) )
         { 
             printf("You must move diagnolly!\n");
                 break;
         }
-        if (border(row2,col2)==0)
+        else if (border(row2,col2)==0)
         {
             printf("That is not on the board!\n");
             break;
         }
-        if (board[row2][col2] == 'x')
+        else if (board[row2][col2] == 'x')
         {
             printf("That spot is occupied!");
             break;
         }
-        if(board[row2][col2] == 'o')
+        else if(board[row2][col2] == 'o')
         {
             if(col2-col1 == 1 )
             {
-                if(spotEmpty(row2--,col2++)==0 )
+                if(spotEmpty(row2--,col2++) == 0 )
                 {
-                    int bs = row2;
-                    row2 = col2;
-                    col2 = bs;
                     removePiece(row2,col2);
                     removePiece(row,col);
-                printf("row2 = %d, col2 = %d\n", row2,col2);
-                row2--;
-                col2++;
-                printf("row2 = %d, col2 = %d\n", row2,col2);
                     createPiece(row2,col2,user);
                     printf("you removed a piece!\n");
                     break;
                 }
             }
-            if(col2-col1 == -1)
+        
+            else if(col2-col1 == -1)
             {
                 printf("col2-col1 == -1 runs\n");
                 if((spotEmpty(row2--,col2++))==1)
@@ -151,6 +144,11 @@ void movePiece(int row1, int col1)
                     removePiece(row,col);
                     createPiece(row2--,col2++,user);
                     printf("you removed a piece!\n");
+                    break;
+                }
+                else
+                {
+                    printf("Can't remove piece, no space!\n");
                     break;
                 }
             }
