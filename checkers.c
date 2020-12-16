@@ -116,7 +116,7 @@ void player1movePiece(int rowdf, int coldf)
                     row2++; /* revert row2 and col2 back to correct values */
                     col2--;
                     removePiece(row2, col2);
-                    removePiece(row1, col1);
+                    removePiece(rowdf, coldf);
                     row2--; /*set row2 and col2 to up 1 right 1 to make jump  */
                     col2++;
                     createPiece(row2, col2, player1);
@@ -314,6 +314,7 @@ void player2movePiece(int rowdf, int coldf)
                 else
                 {
                     printf("There's no space to jump!\n");
+                    continue;
                 }
 
             }
@@ -336,6 +337,7 @@ void player2movePiece(int rowdf, int coldf)
                 else
                 {
                     printf("There's no space to jump!\n");
+                    continue;
                 }
             }
         }
