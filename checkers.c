@@ -203,7 +203,7 @@ void startGame(void)
 {
     for (int x = 0; x < INT_MAX; x++)
     {
-       player1Move();
+        player1Move();
         drawBoard();
         player2Move();
         drawBoard();
@@ -304,7 +304,7 @@ void player2movePiece(int rowdf, int coldf)
                     row4--; /*back to original */
                     col4--;
                     removePiece(row4, col4);
-                    removePiece(row3, col3);
+                    removePiece(rowdf, coldf);
                     row4++; /* down 1 right 1 */
                     col4++;
                     createPiece(row4, col4, player2);
@@ -327,7 +327,7 @@ void player2movePiece(int rowdf, int coldf)
                     row4--; /* revert back to original */
                     col4++;
                     removePiece(row4, col4);
-                    removePiece(row3, col3);
+                    removePiece(rowdf, coldf);
                     row4++; /* down 1 left 1 of x piece that is being eaten */
                     col4--;
                     createPiece(row4, col4, player2);
