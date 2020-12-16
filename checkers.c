@@ -32,13 +32,14 @@ void initBoard(void)
 void drawBoard(void)
 {
     printf("\n");
+    printf("\t 1   2   3   4   5   6   7   8\n\n");
     for ( row = 0; row < boardSize ; row++)
     {
-        printf("   *   *   *   *   *   *   *   \n");
-        printf(" %c * %c * %c * %c * %c * %c * %c * %c \n", board[row][0], board[row][1], board[row][2], board[row][3], board[row][4], board[row][5],
+        printf("\t   *   *   *   *   *   *   *   \n");
+        printf("%d\t %c * %c * %c * %c * %c * %c * %c * %c \n",row+1, board[row][0], board[row][1], board[row][2], board[row][3], board[row][4], board[row][5],
                 board[row][6], board[row][7]);
-        printf("   *   *   *   *   *   *   *   \n");
-        printf("********************************\n");
+        printf("\t   *   *   *   *   *   *   *   \n");
+        printf("\t********************************\n");
     }
 }
    
