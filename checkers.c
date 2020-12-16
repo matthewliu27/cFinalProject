@@ -319,34 +319,36 @@ void movePieceCPU(int rowdf, int coldf)
         {
             printf("checking if = 'o' runs\n");
             printf("col2-col1 == 1 runs\n");
-            if(col4-col3 == 1 )
+            if(col4-col3 == 1 ) /*jumping from left ro right */
             {
-                printf("col2-col1 == 1 runs\n");
-                printf("row2 = %d, col2 = %d\n", row2,col2);
-                if(spotEmpty(row4++,col4--)==1 )
+                row4++; /*checking down 1 right 1r*/
+                col++;
+                if(spotEmpty(row4,col4)==1 )
                 {
-                    int bs = row4;
-                    row4 = col4;
-                    col4 = bs;
+                    row4--; /*back to original */ 
+                    col4--;
                     removePiece(row4,col4);
                     removePiece(row3,col3);
-                printf("row2 = %d, col2 = %d\n", row2,col2);
-                row4++;
-                col4--;
-                printf("row2 = %d, col2 = %d\n", row2,col2);
-                    createPiece(row4,col4,user);
+                    row4++; /* down 1 right 1 */
+                    col4++;
+                    createPiece(row4,col4,computer);
                     printf("you removed a piece!\n");
                     break;
                 }
             }
             if(col4-col3 == -1)
             {
-                printf("col2-col1 == -1 runs\n");
-                if((spotEmpty(row4++,col4++))==1)
+                row4++; /*checking down 1 left 1 */ 
+                col4--;
+                if((spotEmpty(row4,col4))==1)
                 {
+                    row4--; /* revert back to original */
+                    col4++;
                     removePiece(row4,col4);
                     removePiece(row3,col3);
-                    createPiece(row4--,col4++,user);
+                    row4++; /* down 1 left 1 of x piece that is being eaten */
+                    col4--;
+                    createPiece(row4,col4,computer);
                     printf("you removed a piece!\n");
                     break;
                 }
