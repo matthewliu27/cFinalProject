@@ -8,30 +8,31 @@
 #define boardSize 8
 int row1, col1, row2, col2; /* for player1*/
 int row3, col3, row4, col4; /*for player2*/
-char player1;
-char player2;
-char board[boardSize][boardSize];
 
-void initBoard(void);
+char player1; /*player 1 decleration, set it to x in main */
+char player2; /*player 2 decleration, set it to o in main */
 
-void drawBoard(void);
+char board[boardSize][boardSize]; /*set boardsize 8x8 */
 
-void startGame(void);
+void initBoard(void); /* init board*/
 
-void player2Move(void);
+void drawBoard(void); /* draw board*/
 
-void playerMove(void);
-void player1movePiece(int row1, int row2);
-void player2movePiece(int row1, int row2);
+void startGame(void); /*Play game */
 
-void removePiece(int a, int b);
+/* Player move functions */
+void playerMove(void); /*player1 choose piece */
+void player2Move(void); /*player2 choose piece*/
+void player1movePiece(int row1, int row2); /*player1 move piece */
+void player2movePiece(int row1, int row2); /*player2 move piece*/
 
-void createPiece(int a, int b, char c);
+void removePiece(int a, int b); /*sets boardspot to ' ' */
 
-int spotEmpty(int a, int b);
+void createPiece(int a, int b, char c); /* places x or o in board spot */
 
+int spotEmpty(int a, int b); /* check if boardspot = ' ' */
 
-int border(int a, int b);
+int border(int a, int b); /* prevents choices that are not on board  0<=row<=8 0<=col<=8 */
 
-int checkPieces(char a);
+int checkPieces(char a); /* Checks for win */
 #endif
