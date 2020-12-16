@@ -48,6 +48,7 @@ void player1Move(void)
     int x, y;
     while (1)
     {
+        printf("It is player1's turn (x)\n");
         printf("which piece do you want to move? Enter row # press enter then Enter col #\n");
         scanf("%d", &x);
         scanf("%d", &y);
@@ -236,6 +237,7 @@ void player2Move(void)
     int x, y;
     while (1)
     {
+        printf("It is player2's turn (o)\n");
         printf("which piece do you want to move? Enter row # press enter then Enter col #\n");
         scanf("%d", &x);
         scanf("%d", &y);
