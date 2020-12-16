@@ -52,26 +52,26 @@ void player1Move(void)
         printf("which piece do you want to move? Enter row # press enter then Enter col #\n");
         scanf("%d", &x);
         scanf("%d", &y);
-        row = x - 1;
-        col = y - 1;
-        if (spotEmpty(row, col) == 1)
+        row1 = x - 1;
+        col1 = y - 1;
+        if (spotEmpty(row1, col1) == 1)
         {
             printf("this spot is empty\n");
         }
-        else if (board[row][col] != player1)
+        else if (board[row1][col1] != player1)
         {
             printf("That is not your piece!\n");
         }
-        if ((spotEmpty(row, col) == 0) && (board[row][col] == player1))
+        if ((spotEmpty(row1, col1) == 0) && (board[row1][col1] == player1))
         {
-            player1movePiece(row, col);
+            player1movePiece(row1, col1);
             break;
         }
     }
 
 }
 
-void player1movePiece(int row1, int col1)
+void player1movePiece(int rowdf, int coldf)
 {
     int x2, y2;
     while (1)
@@ -81,26 +81,29 @@ void player1movePiece(int row1, int col1)
         scanf("%d", &y2);
         row2 = x2 - 1;
         col2 = y2 - 1;
+        printf("row1 = %d, col1 =%d after asking\n", row1, col1);
 
-        if ((abs(row2 - row1) != 1) || (abs(col2 - col1) != 1))
+        if ((abs(row2 - rowdf) != 1) || (abs(col2 - coldf) != 1))
         {
+            printf("row2 = %d, col2 =%d in check\n", row2, col2);
+            printf("row1 = %d, col1 =%d in check\n", row1, col1);
             printf("You cannot move more than one row or col at a time!\n");
-            break;
+            continue;
         }
         else if ((row2 == row1) || (row2 == row1++) || (col2 == col1))
         {
             printf("You must move diagnolly!\n");
-            break;
+            continue;
         }
         else if (border(row2, col2) == 1)
         {
             printf("That is not on the board!\n");
-            break;
+            continue;
         }
         else if (board[row2][col2] == 'x')
         {
             printf("That spot is occupied!");
-            break;
+            continue;
         }
         else if (board[row2][col2] == 'o')
         {
@@ -113,7 +116,7 @@ void player1movePiece(int row1, int col1)
                     row2++; /* revert row2 and col2 back to correct values */
                     col2--;
                     removePiece(row2, col2);
-                    removePiece(row, col);
+                    removePiece(row1, col1);
                     row2--; /*set row2 and col2 to up 1 right 1 to make jump  */
                     col2++;
                     createPiece(row2, col2, player1);
@@ -123,7 +126,7 @@ void player1movePiece(int row1, int col1)
                 else
                 {
                     printf("There's no space to make a jump!\n");
-                    break;
+                    continue;
                 }
             }
 
@@ -136,7 +139,7 @@ void player1movePiece(int row1, int col1)
                     row2++; /* revert back to origin value of row2 and col2 */
                     col2++;
                     removePiece(row2, col2);
-                    removePiece(row, col);
+                    removePiece(row1, col1);
                     row2--; /* set row2 and col2 to up 1 left 1 to make jump */
                     col2--;
                     createPiece(row2, col2, player1);
@@ -146,13 +149,13 @@ void player1movePiece(int row1, int col1)
                 else
                 {
                     printf("There's no space to make a jump!\n");
-                    break;
+                    continue;
                 }
             }
         }
         else
         {
-            removePiece(row, col);
+            removePiece(rowdf, coldf);
             createPiece(row2, col2, player1);
             break;
         }
@@ -200,7 +203,7 @@ void startGame(void)
 {
     for (int x = 0; x < INT_MAX; x++)
     {
-        player1Move();
+       player1Move();
         drawBoard();
         player2Move();
         drawBoard();
@@ -273,22 +276,22 @@ void player2movePiece(int rowdf, int coldf)
         if ((abs(row4 - row3) != 1) || (abs(col4 - col3) != 1))
         {
             printf("You cannot move more than one row or col at a time!\n");
-            break;
+            continue;
         }
         if ((row4 == row3) || (row4 == row3--) || (col4 == col3))
         {
             printf("You must move diagnolly!\n");
-            break;
+            continue;
         }
         if (border(row4, col4) == 1)
         {
             printf("That is not on the board!\n");
-            break;
+            continue;
         }
         if (board[row4][col4] == 'o')
         {
             printf("That spot is occupied!");
-            break;
+            continue;
         }
         if (board[row4][col4] == 'x')
         {
@@ -311,7 +314,6 @@ void player2movePiece(int rowdf, int coldf)
                 else
                 {
                     printf("There's no space to jump!\n");
-                    break;
                 }
 
             }
@@ -334,7 +336,6 @@ void player2movePiece(int rowdf, int coldf)
                 else
                 {
                     printf("There's no space to jump!\n");
-                    break;
                 }
             }
         }
