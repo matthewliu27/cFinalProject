@@ -9,24 +9,23 @@
 
 void initBoard(void)
 {
-    
-        for(int cold =0; cold<boardSize; cold++)
+    for(int cold =0; cold<boardSize; cold++)
+    {
+        if(cold % 2 == 0)
         {
-            if(cold % 2 == 0)
-            {
-                board[5][cold]= 'x';
-                board[7][cold] = 'x';
-                board[1][cold]= 'o';
-            }
-            if(cold % 2 == 1)
-            {
-                board[0][cold] = 'o';
-                board[6][cold] = 'x';
-                board[2][cold] = 'o';
-            }
+            board[5][cold]= 'x';
+            board[7][cold] = 'x';
+            board[1][cold]= 'o';
         }
-        return;
-    
+        if(cold % 2 == 1)
+        {
+            board[0][cold] = 'o';
+            board[6][cold] = 'x';
+            board[2][cold] = 'o';
+        }
+
+    }
+    return;
 }
   
 void drawBoard(void)
