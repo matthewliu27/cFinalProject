@@ -125,13 +125,17 @@ void movePiece(int row1, int col1)
         {
             if(col2-col1 == 1 )
             {
-                    printf("row2 = %d, col2 = %d in col2-col1 = 1 check\n",row2,col2);
-                if(spotEmpty(row2--,col2++) == 0)
+                row2--; /*spotEmpty somehow alters the value of row2 and col2?? */
+                col2++; /*This is to check the value of up 1 right 1 temporarily */
+                if(spotEmpty(row2,col2) == 1)
                 {
-                    printf("row2 = %d, col2 = %d in spotempty func of 1\n",row2,col2);
+                    row2++; /* revert row2 and col2 back to correct values */
+                    col2--;
                     removePiece(row2,col2);
                     removePiece(row,col);
-                    createPiece(row2--,col2++,user);
+                    row2--; /*set row2 and col2 to up 1 right 1 to make jump  */
+                    col2++;
+                    createPiece(row2,col2,user);
                     printf("you removed a piece!\n");
                     break;
                 }
