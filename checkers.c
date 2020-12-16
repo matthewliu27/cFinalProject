@@ -54,18 +54,18 @@ void player1Move(void)
         scanf("%d", &y);
         row1 = x - 1;
         col1 = y - 1;
-        if (spotEmpty(row1, col1) == 1)
-        {
-            printf("this spot is empty\n");
-        }
-        else if (board[row1][col1] != player1)
-        {
-            printf("That is not your piece!\n");
-        }
-        if ((spotEmpty(row1, col1) == 0) && (board[row1][col1] == player1))
+        if ( ((spotEmpty(row1, col1) == 0) && (board[row1][col1] == player1)) || ((spotEmpty(row1, col1) == 0) && (board[row1][col1] == player1King)))
         {
             player1movePiece(row1, col1);
             break;
+        } 
+        else if (spotEmpty(row1, col1) == 1)
+        {
+            printf("this spot is empty\n");
+        }
+        else if ((board[row1][col1] != player1) || (board[row1][col1] != player1King) )
+        {
+            printf("That is not your piece!\n");
         }
     }
 
@@ -246,18 +246,18 @@ void player2Move(void)
         scanf("%d", &y);
         row3 = x - 1;
         col3 = y - 1;
-        if (spotEmpty(row3, col3) == 1)
-        {
-            printf("this spot is empty\n");
-        }
-        else if (board[row3][col3] == player1)
-        {
-            printf("That is not your piece!\n");
-        }
-        if ((spotEmpty(row3, col3) == 0) && (board[row3][col3] == player2))
+        if (((spotEmpty(row3, col3) == 0) && (board[row3][col3] == player2)) || ((spotEmpty(row3,col3) == 0) && (board[row3][col3] == player2King)))
         {
             player2movePiece(row3, col3);
             break;
+        }
+        else if (spotEmpty(row3, col3) == 1)
+        {
+            printf("this spot is empty\n");
+        }
+        else if ((board[row3][col3] != player2) || (board[row3][col3] != player2King))
+        {
+            printf("That is not your piece!\n");
         }
     }
 
