@@ -42,27 +42,8 @@ void drawBoard(void)
     }
 }
    
-int goFirst(void)
-{
-    char x;
-    printf("Would you like to go first (y/n)\n");
-    do
-    {
-        x = getchar();
-    }
-    while( ( x != 'y')&& ( x != 'Y') && (x != 'n') && (x != 'N') );
-    {
-        printf("Please enter the correct letter");
-    }
-    if((x == 'y') || (x=='Y'))
-    {
-        return 1;
-    }
-    else 
-        return 0;
-}
 
-void playerMove(void)
+void player1Move(void)
 {
     int x,y;
     while(1)
@@ -76,20 +57,20 @@ void playerMove(void)
         {
             printf("this spot is empty\n");
         }
-        else if(board[row][col] != user)
+        else if(board[row][col] != player1)
         {
             printf("That is not your piece!\n");
         }
-        if((spotEmpty(row,col) == 0) && (board[row][col] == user))
+        if((spotEmpty(row,col) == 0) && (board[row][col] == player1))
         {
-            movePiece(row,col);
+            player1movePiece(row,col);
             break;
         }
     }
 
 }
 
-void movePiece(int row1, int col1)
+void player1movePiece(int row1, int col1)
 {
     int x2,y2;
     while(1)
@@ -99,7 +80,6 @@ void movePiece(int row1, int col1)
         scanf("%d",  &y2);
         row2 = x2 - 1; 
         col2 = y2-1;
-        printf("row2 = %d, col2 = %d before jump\n",row2,col2);
         
         if( (abs(row2-row1) != 1) || (abs(col2-col1) != 1) )
         {
@@ -135,7 +115,7 @@ void movePiece(int row1, int col1)
                     removePiece(row,col);
                     row2--; /*set row2 and col2 to up 1 right 1 to make jump  */
                     col2++;
-                    createPiece(row2,col2,user);
+                    createPiece(row2,col2,player1);
                     printf("you removed a piece!\n");
                     break;
                 }
@@ -158,7 +138,7 @@ void movePiece(int row1, int col1)
                     removePiece(row,col);
                     row2--; /* set row2 and col2 to up 1 left 1 to make jump */ 
                     col2--;
-                    createPiece(row2,col2,user);
+                    createPiece(row2,col2,player1);
                     printf("you removed a piece!\n");
                     break;
                 }
@@ -172,7 +152,7 @@ void movePiece(int row1, int col1)
         else
         {
             removePiece(row,col);
-            createPiece(row2,col2,user);
+            createPiece(row2,col2,player1);
             break;
         }
                 
@@ -219,28 +199,21 @@ void startGame(void)
 {
     for(int x=0; x<INT_MAX; x++)
     {
-        if(user == 'x')
-        {
-            playerMove();
-            drawBoard();
-            computerMove();
-            drawBoard();
-        }
-        if(computer == 'x')
-        {
-            computerMove();
-            drawBoard();
-        }
-        if(checkPieces(user)== 0)
-        {
-            printf("YOU LOSE!");
-        }
-        if(checkPieces(computer)==0)
-        {
-            printf("YOU WIN!");
-        }
+        player1Move();
+        drawBoard();
+        player2Move();
+        drawBoard();
+    }
+    if(checkPieces(player1)== 0)
+    {
+        printf("PlAYER 2 WINS!");
+    }
+    if(checkPieces(player2)==0)
+    {
+        printf("PLAYER 1 WINS!");
     }
 }
+
 
 int checkPieces(char a)
 {
@@ -258,7 +231,7 @@ int checkPieces(char a)
   return pieces;
 }
 
-void computerMove (void)
+void player2Move (void)
 {
     int x,y;
     while(1)
@@ -272,20 +245,20 @@ void computerMove (void)
         {
             printf("this spot is empty\n");
         }
-        else if(board[row3][col3] == user)
+        else if(board[row3][col3] == player1)
         {
             printf("That is not your piece!\n");
         }
-        if((spotEmpty(row3,col3) == 0) && (board[row3][col3] == computer))
+        if((spotEmpty(row3,col3) == 0) && (board[row3][col3] == player2))
         {
-            movePieceCPU(row3,col3);
+            player2movePiece(row3,col3);
             break;
         }
     }
 
 }
 
-void movePieceCPU(int rowdf, int coldf)
+void player2movePiece(int rowdf, int coldf)
 {
     int x2,y2;
     while(1)
@@ -319,7 +292,6 @@ void movePieceCPU(int rowdf, int coldf)
         {
             if(col4-col3 == 1 ) /*jumping from left ro right */
             {
-                printf("jumping left to right\n");
                 row4++; /*checking down 1 right 1r*/
                 col4++;
                 if(spotEmpty(row4,col4)==1 )
@@ -330,14 +302,19 @@ void movePieceCPU(int rowdf, int coldf)
                     removePiece(row3,col3);
                     row4++; /* down 1 right 1 */
                     col4++;
-                    createPiece(row4,col4,computer);
+                    createPiece(row4,col4,player2);
                     printf("you removed a piece!\n");
                     break;
                 }
+                else
+                {
+                    printf("There's no space to jump!\n");
+                    break;
+                }
+
             }
             if(col4-col3 == -1)
             {
-                printf("jumping right to left\n");
                 row4++; /*checking down 1 left 1 */ 
                 col4--;
                 if((spotEmpty(row4,col4))==1)
@@ -348,8 +325,13 @@ void movePieceCPU(int rowdf, int coldf)
                     removePiece(row3,col3);
                     row4++; /* down 1 left 1 of x piece that is being eaten */
                     col4--;
-                    createPiece(row4,col4,computer);
+                    createPiece(row4,col4,player2);
                     printf("you removed a piece!\n");
+                    break;
+                }
+                else
+                {
+                    printf("There's no space to jump!\n");
                     break;
                 }
             }
@@ -357,12 +339,10 @@ void movePieceCPU(int rowdf, int coldf)
         else
         {
             removePiece(rowdf,coldf);
-            createPiece(row4,col4,computer);
+            createPiece(row4,col4,player2);
             break;
         }
     }
-        
-
 }
     
 
