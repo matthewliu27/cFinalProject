@@ -124,12 +124,8 @@ void movePiece(int row1, int col1)
         }
         if(board[row2][col2] == 'o')
         {
-            printf("checking if = 'o' runs\n");
-            printf("col2-col1 == 1 runs\n");
             if(col2-col1 == 1 )
             {
-                printf("col2-col1 == 1 runs\n");
-                printf("row2 = %d, col2 = %d\n", row2,col2);
                 if(spotEmpty(row2--,col2++)==0 )
                 {
                     int bs = row2;
