@@ -161,7 +161,7 @@ void player1movePiece(int row1, int col1)
 
 int border(int a, int b)
 {
-    if(a>=1 && a<= 8 && b>=1 && b<=8)
+    if(a>=0 && a<= 7 && b>=0 && b<7)
     {
         return 1;
     }
