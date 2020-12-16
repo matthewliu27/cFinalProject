@@ -317,12 +317,11 @@ void movePieceCPU(int rowdf, int coldf)
         }
         if(board[row4][col4] == 'x')
         {
-            printf("checking if = 'o' runs\n");
-            printf("col2-col1 == 1 runs\n");
             if(col4-col3 == 1 ) /*jumping from left ro right */
             {
+                printf("jumping left to right\n");
                 row4++; /*checking down 1 right 1r*/
-                col++;
+                col4++;
                 if(spotEmpty(row4,col4)==1 )
                 {
                     row4--; /*back to original */ 
@@ -338,6 +337,7 @@ void movePieceCPU(int rowdf, int coldf)
             }
             if(col4-col3 == -1)
             {
+                printf("jumping right to left\n");
                 row4++; /*checking down 1 left 1 */ 
                 col4--;
                 if((spotEmpty(row4,col4))==1)
