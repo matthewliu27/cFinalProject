@@ -100,6 +100,7 @@ void movePiece(int row1, int col1)
         scanf("%d",  &y2);
         row2 = x2 - 1; 
         col2 = y2-1;
+        printf("row2 = %d, col2 = %d before jump\n",row2,col2);
         
         if( (abs(row2-row1) != 1) || (abs(col2-col1) != 1) )
         {
@@ -125,8 +126,9 @@ void movePiece(int row1, int col1)
         {
             if(col2-col1 == 1 )
             {
-                if(spotEmpty(row2--,col2++) == 0 )
+                if(spotEmpty(row2--,col2++) == 0)
                 {
+                    printf("row2 = %d, col2 = %d after jump\n",row2,col2);
                     removePiece(row2,col2);
                     removePiece(row,col);
                     createPiece(row2,col2,user);
@@ -197,7 +199,6 @@ int spotEmpty(int a, int b)
     {
         return 0;
     }
-    return 0;
 }
   
 void startGame(void)
