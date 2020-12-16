@@ -12,15 +12,8 @@ char board[boardSize][boardSize];
 
 int main() 
 {
-    user = 'x';
-    computer = 'o';
-    int choice = goFirst();
-    if(choice == 0) 
-    {
-        user = 'o';
-        computer = 'x';
-    }
-
+    player1 = 'x';
+    player2 = 'o';
 
     initBoard();
     drawBoard();
