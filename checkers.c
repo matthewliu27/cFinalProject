@@ -139,6 +139,11 @@ void movePiece(int row1, int col1)
                     printf("you removed a piece!\n");
                     break;
                 }
+                else
+                {
+                    printf("There's no space to make a jump!\n");
+                    break;
+                }
             }
         
             else if(col2-col1 == -1)
@@ -159,7 +164,7 @@ void movePiece(int row1, int col1)
                 }
                 else
                 {
-                    printf("Can't remove piece, no space!\n");
+                    printf("There's no no space to make a jump!\n");
                     break;
                 }
             }
