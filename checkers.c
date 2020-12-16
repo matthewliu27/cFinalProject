@@ -131,7 +131,7 @@ void movePiece(int row1, int col1)
                     printf("row2 = %d, col2 = %d after jump\n",row2,col2);
                     removePiece(row2,col2);
                     removePiece(row,col);
-                    createPiece(row2,col2,user);
+                    createPiece(row2--,col2++,user);
                     printf("you removed a piece!\n");
                     break;
                 }
