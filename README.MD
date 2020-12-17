@@ -7,8 +7,9 @@ The game follows the standard checkeres rules.
 The objective was to create a fully functioning
 checkers game that followed the standard checkers rules, i.e jumping, kinging, etc.
 However, we found it was there was some difficulties. There was complications in implementing the game features using c logic and
-we came across a multitude of bugs that we had to troubleshoot. For instance, the game punishes you by skipping your turn if you
-enter a illegal move.
-What we were able to achieve was implenting the game rule of pieces only being able to move diagnolly 1 square, and pieces can 
-only move forward. The function of jumping pieces also works. 
+we came across a multitude of bugs that we had to troubleshoot. For instance, there was a bug where the game punishes you by skipping your turn if you
+enter a illegal move (bug fixed!).
+What we were able to achieve was implenting the game rule of pieces only being able to move diagnolly 1 square, and non-kinged pieces can 
+only move forward. The function of jumping pieces also works. Pieces can be kinged and king pieces can move forward and backwards through the board!
+A feature that we were unable to implement was the ability to jump multiple pieces at once. 
 
