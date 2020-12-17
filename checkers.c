@@ -452,7 +452,6 @@ void player2movePiece(int rowdf, int coldf)
                     printf("There's no space to jump!\n");
                     continue;
                 }
-
             }
             if (col4 - col3 == -1)
             {
