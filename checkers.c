@@ -82,18 +82,15 @@ void player1movePiece(int rowdf, int coldf)
     while (1)
     {
         printf("Where do you want to move it?\n");
-        printf("kingStatus = %d\n", kingStatus);
         scanf("%d", &x2);
         scanf("%d", &y2);
         row2 = x2 - 1;
         col2 = y2 - 1;
         if (kingStatus == 0)
         {
-            printf("row2 = %d\n", row2);
             if ((abs(row2 - rowdf) != 1) || (abs(col2 - coldf) != 1))
             {
                 printf("You cannot move more than one row or col at a time!\n");
-                printf("abs(row2-rowdf) = %d abs(col2-coldf) = %d!\n", row2 - rowdf, col2 - coldf);
                 continue;
             }
             else if (((row2 == rowdf) && (col2 != coldf)) || ((col2 == coldf) && (row2 != coldf)))
@@ -119,7 +116,6 @@ void player1movePiece(int rowdf, int coldf)
                 {
                     row2--; /* spotEmpty somehow alters the value of row2 and col2?? */
                     col2++; /* This is to check the value of up 1 right 1 temporarily */
-                    printf("row2 = %d, col2 = %d\n", col2, row2);
                     if (spotEmpty(row2, col2) == 1)
                     {
                         row2++; /* revert row2 and col2 back to correct values */
@@ -198,11 +194,9 @@ void player1movePiece(int rowdf, int coldf)
         }
         if (kingStatus == 1)
         {
-            printf("row2 = %d\n", row2);
             if ((abs(row2 - rowdf) != 1) || (abs(col2 - coldf) != 1))
             {
                 printf("You cannot move more than one row or col at a time!\n");
-                printf("abs(row2-rowdf) = %d abs(col2-coldf) = %d!\n", row2 - rowdf, col2 - coldf);
                 continue;
             }
             else if (((row2 == rowdf) && (col2 != coldf)) || ((col2 == coldf) && (row2 != coldf)))
@@ -365,6 +359,8 @@ int spotEmpty(int a, int b)
 
 void startGame(void)
 {
+    initBoard();
+    drawBoard();
     for (int x = 0; x < INT_MAX; x++)
     {
         player1Move();
@@ -441,7 +437,6 @@ void player2movePiece(int rowdf, int coldf)
     while (1)
     {
         printf("Where do you want to move it?\n");
-        printf("kingStatus = %d\n", kingStatus);
         scanf("%d", &x2);
         scanf("%d", &y2);
         row4 = x2 - 1;
