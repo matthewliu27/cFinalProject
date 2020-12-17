@@ -17,7 +17,27 @@ int main()
     player1King = 'X';
     player2King = 'O';
 
-    initBoard();
-    drawBoard();
-    startGame();
+    char x;
+    printf("Do you want to play checkers? (y/n)\n");
+        x = getchar();
+    while (10 > 1)
+    {
+        if ((x != 'y') && (x != 'Y') && (x != 'n') && (x != 'N'))
+        {
+            printf("Enter a valid choice!\n");
+            x = getchar();
+        }
+        if ((x == 'y') || (x == 'Y'))
+        {
+            printf("Have fun\n");
+            startGame();
+        }
+        if ((x == 'n') || (x == 'N'))
+        {
+            printf("OK, bye!\n");
+            break;
+        }
+    }
+    
+
 }
