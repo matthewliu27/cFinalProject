@@ -11,6 +11,10 @@ int row3, col3, row4, col4; /*for player2*/
 
 char player1; /*player 1 decleration, set it to x in main */
 char player2; /*player 2 decleration, set it to o in main */
+char player1King;
+char player2King;
+
+int kingStatus; /*how to tell if piece selected is king */
 
 char board[boardSize][boardSize]; /*set boardsize 8x8 */
 
