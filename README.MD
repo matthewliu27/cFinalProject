@@ -1,4 +1,4 @@
-![](https://github.com/matthewliu27/cFinalProject/tree/master/checkerslogo.png?raw=true)
+![](checkerslogo.png)
 
 1. To run program type git clone https://github.com/matthewliu27/cFinalProject
 2. type make, then make run
