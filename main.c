@@ -10,7 +10,7 @@ void drawBoard(void);
 
 char board[boardSize][boardSize];
 
-int main() 
+int main()
 {
     player1 = 'x';
     player2 = 'o';
@@ -21,6 +21,3 @@ int main()
     drawBoard();
     startGame();
 }
-
-
-
