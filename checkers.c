@@ -54,11 +54,18 @@ void player1Move(void)
         scanf("%d", &y);
         row1 = x - 1;
         col1 = y - 1;
-        if ( ((spotEmpty(row1, col1) == 0) && (board[row1][col1] == player1)) || ((spotEmpty(row1, col1) == 0) && (board[row1][col1] == player1King)))
+        if ( ((spotEmpty(row1, col1) == 0) && (board[row1][col1] == player1)) ) 
         {
+            kingStatus = 0;
             player1movePiece(row1, col1);
             break;
-        } 
+        }
+        else if ((spotEmpty(row1, col1) == 0) && (board[row1][col1] == player1King))
+        {
+            kingStatus = 1;
+            player1movePiece(row1,col1);
+            break;
+        }
         else if (spotEmpty(row1, col1) == 1)
         {
             printf("this spot is empty\n");
@@ -68,7 +75,6 @@ void player1Move(void)
             printf("That is not your piece!\n");
         }
     }
-
 }
 
 void player1movePiece(int rowdf, int coldf)
@@ -77,22 +83,25 @@ void player1movePiece(int rowdf, int coldf)
     while (1)
     {
         printf("where do you want to move it?\n");
+        printf("kingStatus = %d\n",kingStatus);
         scanf("%d", &x2);
         scanf("%d", &y2);
         row2 = x2 - 1;
         col2 = y2 - 1;
-        printf("row1 = %d, col1 =%d after asking\n", row1, col1);
-
         if ((abs(row2 - rowdf) != 1) || (abs(col2 - coldf) != 1))
         {
-            printf("row2 = %d, col2 =%d in check\n", row2, col2);
-            printf("row1 = %d, col1 =%d in check\n", row1, col1);
             printf("You cannot move more than one row or col at a time!\n");
+            printf("abs(row2-rowdf) = %d abs(col2-coldf) = %d!\n",row2-rowdf,col2-coldf);
             continue;
         }
-        else if ((row2 == row1) || (row2 == row1++) || (col2 == col1))
+        else if ( ((row2 == rowdf) && (col2 != coldf)) || ( (col2 == coldf) && (row2 != coldf) ) )
         {
             printf("You must move diagnolly!\n");
+            continue;
+        }
+        else if ((kingStatus == 0) && (row2 == rowdf++) )
+        {
+            printf("Regular pieces can't move backwards!\n");
             continue;
         }
         else if (border(row2, col2) == 1)
@@ -156,6 +165,7 @@ void player1movePiece(int rowdf, int coldf)
         else
         {
             removePiece(rowdf, coldf);
+            removePiece(row1, col1);
             createPiece(row2, col2, player1);
             break;
         }
@@ -186,6 +196,7 @@ void createPiece(int a, int b, char c)
     board[a][b] = c;
     return;
 }
+
 
 int spotEmpty(int a, int b)
 {
