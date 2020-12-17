@@ -127,9 +127,18 @@ void player1movePiece(int rowdf, int coldf)
                         removePiece(rowdf, coldf);
                         row2--; /*set row2 and col2 to up 1 right 1 to make jump  */
                         col2++;
-                        createPiece(row2, col2, player1);
-                        printf("you removed a piece!\n");
-                        break;
+                        if (row2 == 0)
+                        {
+                            createPiece(row2, col2, player1King);
+                            printf("you removed a piece and got a King!\n");
+                            break;
+                        }
+                        else
+                        { 
+                            createPiece(row2, col2, player1);
+                            printf("you removed a piece!\n");
+                            break;
+                        }
                     }
                     else
                     {
@@ -149,9 +158,18 @@ void player1movePiece(int rowdf, int coldf)
                         removePiece(row1, col1);
                         row2--; /* set row2 and col2 to up 1 left 1 to make jump */
                         col2--;
-                        createPiece(row2, col2, player1);
-                        printf("you removed a piece!\n");
-                        break;
+                        if (row2 == 0)
+                        {
+                            createPiece(row2, col2, player1King);
+                            printf("you removed a piece and got a King!\n");
+                            break;
+                        }
+                        else
+                        {
+                            createPiece(row2, col2, player1);
+                            printf("you removed a piece!\n");
+                            break;
+                        }
                     }
                     else
                     {
@@ -164,8 +182,17 @@ void player1movePiece(int rowdf, int coldf)
             {
                 removePiece(rowdf, coldf);
                 removePiece(row1, col1);
-                createPiece(row2, col2, player1);
-                break;
+                if (row2 == 0)
+                {
+                    createPiece(row2, col2, player1King);
+                    break;
+                }
+                else
+                {
+                    createPiece(row2, col2, player1);
+                    break;
+                      
+                }
             }
         }
         if (kingStatus == 1)
@@ -452,6 +479,7 @@ void player2movePiece(int rowdf, int coldf)
                     printf("There's no space to jump!\n");
                     continue;
                 }
+
             }
             if (col4 - col3 == -1)
             {
