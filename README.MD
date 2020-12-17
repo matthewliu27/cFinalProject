@@ -1,3 +1,5 @@
+![alt text](https://github.com/[matthewliu27]/[CFinalProject]/blob/[master]/checkerslogo.png?raw=true)
+
 1. To run program type git clone https://github.com/matthewliu27/cFinalProject
 2. type make, then make run
 3. User 1 goes first, and is x. Enter a the desired row #, press enter, then enter desired col #, the press enter
