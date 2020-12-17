@@ -116,7 +116,7 @@ void player1movePiece(int rowdf, int coldf)
             }
             else if (board[row2][col2] == 'o' || board[row2][col2] == 'O')
             {
-                if (col2 - col1 == 1)
+                if (col2 - coldf == 1)
                 {
                     row2--; /*spotEmpty somehow alters the value of row2 and col2?? */
                     col2++; /*This is to check the value of up 1 right 1 temporarily */
@@ -147,7 +147,7 @@ void player1movePiece(int rowdf, int coldf)
                         continue;
                     }
                 }
-                else if (col2 - col1 == -1)
+                else if (col2 - coldf == -1)
                 {
                     row2--; /*spotEmpty somehow alters the value of row2 and col2?? */
                     col2--; /* This is to check the value of up 1 left 1 temporarlily */
