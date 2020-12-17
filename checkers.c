@@ -168,7 +168,133 @@ void player1movePiece(int rowdf, int coldf)
                 break;
             }
         }
+        if (kingStatus == 1)
+        {
+            printf("row2 = %d\n", row2);
+            if ((abs(row2 - rowdf) != 1) || (abs(col2 - coldf) != 1))
+            {
+                printf("You cannot move more than one row or col at a time!\n");
+                printf("abs(row2-rowdf) = %d abs(col2-coldf) = %d!\n", row2 - rowdf, col2 - coldf);
+                continue;
+            }
+            else if (((row2 == rowdf) && (col2 != coldf)) || ((col2 == coldf) && (row2 != coldf)))
+            {
+                printf("You must move diagnolly!\n");
+            }
+            else if (border(row2, col2) == 1)
+            {
+                printf("That is not on the board!\n");
+            }
+            else if (board[row2][col2] == 'x')
+            {
+                printf("That spot is occupied!");
+            }
+            else if (board[row2][col2] == 'o')
+            {
+                if (row2 < rowdf)
+                {
+                    if (col2 - col1 == 1)
+                    {
+                        row2--; /*spotEmpty somehow alters the value of row2 and col2?? */
+                        col2++; /*This is to check the value of up 1 right 1 temporarily */
+                        if (spotEmpty(row2, col2) == 1)
+                        {
+                            row2++; /* revert row2 and col2 back to correct values */
+                            col2--;
+                            removePiece(row2, col2);
+                            removePiece(rowdf, coldf);
+                            row2--; /*set row2 and col2 to up 1 right 1 to make jump  */
+                            col2++;
+                            createPiece(row2, col2, player1King);
+                            printf("you removed a piece!\n");
+                            break;
+                        }
+                        else
+                        {
+                            printf("There's no space to make a jump!\n");
+                            continue;
+                        }
+                    }
+                    else if (col2 - col1 == -1)
+                    {
+                        row2--; /*spotEmpty somehow alters the value of row2 and col2?? */
+                        col2--; /* This is to check the value of up 1 left 1 temporarlily */
+                        if (spotEmpty(row2, col2) == 1)
+                        {
+                            row2++; /* revert back to origin value of row2 and col2 */
+                            col2++;
+                            removePiece(row2, col2);
+                            removePiece(row1, col1);
+                            row2--; /* set row2 and col2 to up 1 left 1 to make jump */
+                            col2--;
+                            createPiece(row2, col2, player1King);
+                            printf("you removed a piece!\n");
+                            break;
+                        }
+                        else
+                        {
+                            printf("There's no space to make a jump!\n");
+                            continue;
+                        }
+                    }
+                }
+                if (row2 > rowdf)
+                {
+                    if (col2 - col1 == 1) /*jumping from left ro right */
+                    {
+                        row2++; /*checking down 1 right 1r*/
+                        col2++;
+                        if (spotEmpty(row2, col2) == 1)
+                        {
+                            row2--; /*back to original */
+                            col2--;
+                            removePiece(row2, col2);
+                            removePiece(rowdf, coldf);
+                            row2++; /* down 1 right 1 */
+                            col2++;
+                            createPiece(row2, col2, player1King);
+                            printf("you removed a piece!\n");
+                            break;
+                        }
+                        else
+                        {
+                            printf("There's no space to jump!\n");
+                            continue;
+                        }
 
+                    }
+                    if (col2 - col1 == -1)
+                    {
+                        row2++; /*checking down 1 left 1 */
+                        col2--;
+                        if ((spotEmpty(row2, col2)) == 1)
+                        {
+                            row2--; /* revert back to original */
+                            col2++;
+                            removePiece(row2, col2);
+                            removePiece(rowdf, coldf);
+                            row2++; /* down 1 left 1 of x piece that is being eaten */
+                            col2--;
+                            createPiece(row2, col2, player1King);
+                            printf("you removed a piece!\n");
+                            break;
+                        }
+                        else
+                        {
+                            printf("There's no space to jump!\n");
+                            continue;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                removePiece(rowdf, coldf);
+                removePiece(row1, col1);
+                createPiece(row2, col2, player1King);
+                break;
+            }
+        }
     }
 }
 
