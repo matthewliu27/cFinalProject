@@ -95,6 +95,7 @@ void player1movePiece(int rowdf, int coldf)
             {
                 printf("You cannot move more than one row or col at a time!\n");
                 printf("abs(row2-rowdf) = %d abs(col2-coldf) = %d!\n", row2 - rowdf, col2 - coldf);
+                continue;
             }
             else if (((row2 == rowdf) && (col2 != coldf)) || ((col2 == coldf) && (row2 != coldf)))
             {
