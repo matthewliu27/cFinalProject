@@ -113,7 +113,7 @@ void player1movePiece(int rowdf, int coldf)
             {
                 printf("That spot is occupied!");
             }
-            else if (board[row2][col2] == 'o')
+            else if (board[row2][col2] == 'o' || board[row2][col2] == 'O')
             {
                 if (col2 - col1 == 1)
                 {
@@ -216,7 +216,7 @@ void player1movePiece(int rowdf, int coldf)
             {
                 printf("That spot is occupied!");
             }
-            else if (board[row2][col2] == 'o')
+            else if (board[row2][col2] == 'o' || board[row2][col2] == 'O')
             {
                 if (row2 < rowdf)
                 {
@@ -456,7 +456,7 @@ void player2movePiece(int rowdf, int coldf)
             printf("That spot is occupied!");
             continue;
         }
-        if (board[row4][col4] == 'x')
+        if (board[row4][col4] == 'x' || board[row4][col4] == 'X')
         {
             if (col4 - col3 == 1) /*jumping from left ro right */
             {
