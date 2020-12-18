@@ -5,6 +5,9 @@
 3. User 1 goes first, and is x. Enter a the desired row #, press enter, then enter desired col #, the press enter
 The game follows the standard checkeres rules.
 
+
+Video Explanation here : https://www.youtube.com/watch?v=IznVthhBEMk
+
     We (Matt & Hegnan) set out to create the board game, checkers using c programming. 
 The objective was to create a fully functioning
 checkers game that followed the standard checkers rules, i.e jumping, kinging, etc.
